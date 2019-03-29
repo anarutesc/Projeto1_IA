@@ -12,10 +12,12 @@ public class Dispositivo {
 
     private int id;
     private String nome;
+    private int potencia;
 
-    public Dispositivo(int id, String nome) {
+    public Dispositivo(int id, String nome, int potencia) {
         this.id = id;
         this.nome = nome;
+        this.potencia = potencia;
     }
 
     public int getId() {
@@ -32,6 +34,14 @@ public class Dispositivo {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public int getPotencia() {
+        return potencia;
+    }
+
+    public void setPotencia(int potencia) {
+        this.potencia = potencia;
     }
     
     

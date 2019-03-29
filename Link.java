@@ -10,12 +10,14 @@
 public class Link {
 
     private Dispositivo a, b;
-    private int custo;
-    
-    public Link(Dispositivo a, Dispositivo b, int custo) {
+    private int distancia;
+    private char cabo;
+
+    public Link(Dispositivo a, Dispositivo b, int distancia, char cabo) {
         this.a = a;
         this.b = b;
-        this.custo = custo;
+        this.distancia = distancia;
+        this.cabo = cabo;
     }
 
     public Dispositivo getA() {
@@ -34,27 +36,31 @@ public class Link {
         this.b = b;
     }
 
-    public int getCusto() {
-        return custo;
+    public int custo() {
+        switch (cabo) {
+            case 'O':
+                return distancia + 2 + a.getPotencia();
+            case 'C':
+                return distancia + 6 + a.getPotencia();
+            case 'T':
+                return distancia + 10 + a.getPotencia();
+        }
+        return 0;
     }
 
-    public void setCusto(int custo) {
-        this.custo = custo;
-    }
- 
     @Override
-	public boolean equals(Object obj) {
-		Link other = (Link)obj;
-		if(this.a == other.getA() && this.b == other.getB()){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
-	@Override
-	public String toString() {
-		return "("+this.a+","+this.b+"|"+this.custo+") ";
-	}
+    public boolean equals(Object obj) {
+        Link other = (Link) obj;
+        if (this.a == other.getA() && this.b == other.getB()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "(" + this.a + "," + this.b + "|" + this.custo() + ") ";
+    }
 
 }
