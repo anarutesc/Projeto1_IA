@@ -11,6 +11,7 @@ public class Link {
 
     private Dispositivo a, b;
     private int distancia;
+    public int custo = 0;
     private char cabo;
 
     public Link(Dispositivo a, Dispositivo b, int distancia, char cabo) {
@@ -18,6 +19,7 @@ public class Link {
         this.b = b;
         this.distancia = distancia;
         this.cabo = cabo;
+        this.custo();
     }
 
     public Dispositivo getA() {
@@ -35,17 +37,32 @@ public class Link {
     public void setB(Dispositivo b) {
         this.b = b;
     }
+    
+    public void setDistancia(int distancia){
+        this.distancia = distancia;
+    }
+    
+    public int getDistancia(){
+        return distancia;
+    }
+    
+    public void setCabo(char cabo){
+        this.cabo = cabo;
+    }
+    
+    public char getCabo(){
+        return cabo;
+    }
 
-    public int custo() {
+    public void custo() {
         switch (cabo) {
             case 'O':
-                return distancia + 2 + a.getPotencia();
+                custo = distancia + 1 + a.getPotencia();
             case 'C':
-                return distancia + 6 + a.getPotencia();
+                custo = distancia + 10 + a.getPotencia();
             case 'T':
-                return distancia + 10 + a.getPotencia();
+                custo = distancia + 20 + a.getPotencia();
         }
-        return 0;
     }
 
     @Override
@@ -60,7 +77,7 @@ public class Link {
 
     @Override
     public String toString() {
-        return "(" + this.a + "," + this.b + "|" + this.custo() + ") ";
+        return "(" + this.a + "," + this.b + "|" + this.custo + ") ";
     }
 
 }
