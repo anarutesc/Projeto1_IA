@@ -5,7 +5,7 @@
  */
 /**
  *
- * @author ana_r
+ * @authors aleika, ana_r, danielly
  */
 public class Link {
 
